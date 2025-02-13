@@ -12,16 +12,20 @@ const Login = () => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        userLogin(email, password).then((userLoginResponse) => {
-            if (userLoginResponse.statusMessage === 'success') {
-                localStorage.setItem('token', userLoginResponse.msg);
-                emailRef.current.value = '';
-                passwordRef.current.value = '';
-                navigate('/')
-            } else {
-                alert(userLoginResponse.msg);
-            }
-        });
+        try{
+            userLogin(email, password).then((userLoginResponse) => {
+                if (userLoginResponse.statusMessage === 'success') {
+                    localStorage.setItem('token', userLoginResponse.msg);
+                    emailRef.current.value = '';
+                    passwordRef.current.value = '';
+                    navigate('/')
+                } else {
+                    alert(userLoginResponse.msg);
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -36,7 +40,7 @@ const Login = () => {
                     <label htmlFor="passwordInput" className="form-label">Password</label>
                     <input ref={passwordRef} type="password" className="form-control" id="passwordInput" />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Log in</button>
             </form>
         </div>
     )

@@ -3,10 +3,10 @@ import ShushContext from "./ShushContext";
 
 const ShushState = (props) => {
     const url = 'http://localhost:5000/shush';
+    const token = localStorage.getItem('token');
 
-    const getUserShushes = async () => {
-        const token = localStorage.getItem('token');
-        const userShushes = await fetch(url+'/userShushes', {
+    const getUserShushes = async (userName) => {
+        const userShushes = await fetch(url+'/userShushes/'+userName, {
             method: 'GET',
             headers: {
                 'Auth-Token': token,
@@ -16,8 +16,7 @@ const ShushState = (props) => {
         return await userShushes.json();
     };
 
-    const postUserShush = async(name, userName, message) => {
-        const token = localStorage.getItem('token');
+    const postUserShush = async(name, userName, secretUserName, message) => {
         const postResponse = await fetch(url+'/shush',
             {
                 method: 'POST',
@@ -25,14 +24,13 @@ const ShushState = (props) => {
                     'Content-Type': 'application/json',
                     'Auth-Token': token
                 },
-                body: JSON.stringify({ name, userName, message })
+                body: JSON.stringify({ name, userName, secretUserName, message })
             }
         );
         return await postResponse.json();
     }
 
     const feedShushes = async() => {
-        const token = localStorage.getItem('token');
         const allShushes = await fetch(url+'/feed', {
             method: 'GET',
             headers: {
