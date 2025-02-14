@@ -32,7 +32,7 @@ const Shushes = () => {
                         {/* <img src={img} className="card-img-top" alt="userPic" /> */}
                         <div className="card-body">
                             <h5 className="card-title">{name}</h5>
-                            <p className="card-text">{`Shushing since: ${new Date(date).getMonth()-1}Months ${new Date(date).getDay()}Days ${new Date(date).getMinutes()}Minutes`}</p>
+                            <p className="card-text">Shushing since: {new Date(date).getUTCDate()}/{new Date(date).getUTCMonth()}/{new Date(date).getUTCFullYear()}</p>
                             <div id="urlHelp" className="form-text">{name}'s link - share it with people to get them here</div>
                             <div className="mb-3" style={{ border: '0.01rem gray solid', borderRadius: '0.3rem' }}>
                                 <input id='urlInput' aria-describedby="urlHelp" ref={urlRef} className="card-text" style={{ width: '90%', border: '0rem', borderRadius: '0.3rem', backgroundColor: 'white' }} disabled value={userUrl} />

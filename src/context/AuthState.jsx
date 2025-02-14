@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import AuthContex from "./AuthContext";
 
 const AuthState = (props) => {
-    const url = 'http://localhost:5000/auth/';
-    const [selfData, setSelfData] = useState({ name:'', secretUserName: '', userName: '', date:'', email:'' });
+    const api = process.env.API_URL;
+    const url = api + 'auth/';
+    // const url = 'http://localhost:000/auth/';
+    const [selfData, setSelfData] = useState({ name: '', secretUserName: '', userName: '', date: '', email: '' });
     const token = localStorage.getItem('token');
 
     const userSignUp = async (email) => {
@@ -17,8 +19,8 @@ const AuthState = (props) => {
         return await response.json();
     }
 
-    const emailVerify = async(code, name, email, password) => {
-        const emailVerification = await fetch(url+'verify', {
+    const emailVerify = async (code, name, email, password) => {
+        const emailVerification = await fetch(url + 'verify', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,7 +42,7 @@ const AuthState = (props) => {
     }
 
     const getSelfData = async () => {
-        const selfDataResponse = await fetch(url+'selfData',
+        const selfDataResponse = await fetch(url + 'selfData',
             {
                 method: 'GET',
                 headers: {
@@ -49,13 +51,13 @@ const AuthState = (props) => {
             }
         );
         const selfDataJson = await selfDataResponse.json();
-        if(selfDataJson.statusMessage === 'success') {
+        if (selfDataJson.statusMessage === 'success') {
             setSelfData(selfDataJson.msg);
         }
     }
 
     const getUserList = async (searchName) => {
-        const userListResponse = await fetch(url+'userList', 
+        const userListResponse = await fetch(url + 'userList',
             {
                 method: 'POST',
                 headers: {
@@ -70,8 +72,8 @@ const AuthState = (props) => {
         return nameList;
     }
 
-    const getUserData = async(userName) => {
-        const userDataResponse = await fetch(url+'userData/'+userName,
+    const getUserData = async (userName) => {
+        const userDataResponse = await fetch(url + 'userData/' + userName,
             {
                 method: 'GET',
                 headers: {
@@ -80,7 +82,7 @@ const AuthState = (props) => {
             }
         );
         const userDataJson = await userDataResponse.json();
-        if(userDataJson.statusMessage === 'success') {
+        if (userDataJson.statusMessage === 'success') {
             return userDataJson.msg;
         }
     }

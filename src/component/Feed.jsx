@@ -32,7 +32,7 @@ const Feed = () => {
                   {/* <c src={shush.userImg} alt="userPic" /> */}
                   <h5 className="card-title d-inline"> {shush.name}</h5>
                   <div className="card-text mb-3">
-                    <p className="card-text">{`${new Date(shush.date).getMonth()-1}Months ${new Date(shush.date).getDay()}Days ${new Date(shush.date).getMinutes()}Minutes ago`}</p>
+                    <p className="card-text">{new Date(shush.date).getUTCDate()}/{new Date(shush.date).getUTCMonth()}/{new Date(shush.date).getUTCFullYear()}</p>
                     <span className="card-text">{shush.secretUserName}:</span>
                     <span className="card-text"> {shush.message}</span>
                   </div>

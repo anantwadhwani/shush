@@ -1,10 +1,9 @@
 import React, { useContext, useRef } from 'react';
 import AuthContext from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const { userLogin } = useContext(AuthContext);
-    const navigate = useNavigate();
+    const loginPageRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -18,7 +17,7 @@ const Login = () => {
                     localStorage.setItem('token', userLoginResponse.msg);
                     emailRef.current.value = '';
                     passwordRef.current.value = '';
-                    navigate('/')
+                    loginPageRef.current.click();
                 } else {
                     alert(userLoginResponse.msg);
                 }
@@ -41,6 +40,7 @@ const Login = () => {
                     <input ref={passwordRef} type="password" className="form-control" id="passwordInput" />
                 </div>
                 <button type="submit" className="btn btn-primary">Log in</button>
+                <a style={{ display: 'none' }} ref={loginPageRef} href='/'></a>
             </form>
         </div>
     )

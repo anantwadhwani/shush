@@ -1,11 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import AuthContext from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 const SelfData = () => {
     const { selfData, getSelfData,  } = useContext(AuthContext);
-    let { userName, name, secretUserName, email, date } = selfData;
-    const navigate = useNavigate();
+    let { name, secretUserName, email, date } = selfData;
+    const loginPageRef = useRef();
 
     useEffect(() => {
         getSelfData();
@@ -14,7 +13,7 @@ const SelfData = () => {
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
-        navigate('/login');
+        loginPageRef.current.click();
     }
 
     return (
@@ -23,11 +22,11 @@ const SelfData = () => {
                 {name}
             </button>
             <ul style={{ paddingBottom: '0rem' }} className="dropdown-menu">
-                <li><p className="dropdown-item">{userName}</p></li>
+            <li><p className="dropdown-item">Your secret identity: {secretUserName}</p></li>
                 <li><p className="dropdown-item">{email}</p></li>
-                <li><p className="dropdown-item">{date}</p></li>
-                <li><p className="dropdown-item">{secretUserName}</p></li>
-                <li style={{ borderRadius: '0.2rem', marginBottom: '0' }}><button onClick={handleLogOut} type="button" style={{ width: '100%' }} className="btn btn-danger">Log Out</button></li>
+                <li><p className="dropdown-item">Member since {new Date(date).getUTCDate()}/{new Date(date).getUTCMonth()}/{new Date(date).getUTCFullYear()}</p></li>
+                <li style={{ borderBottomLeftRadius: '0.2rem', borderBottomRightRadius: '0.2rem', marginBottom: '0' }}><button onClick={handleLogOut} type="button" style={{ width: '100%', backgroundColor: 'red', color: 'white', border: '0.1rem red solid', borderBottomLeftRadius: '0.2rem', borderBottomRightRadius: '0.2rem' }}>Log Out</button></li>
+                <li style={{ display: 'none' }}><a ref={loginPageRef} href='/'></a></li>
             </ul>
         </div>
     )
