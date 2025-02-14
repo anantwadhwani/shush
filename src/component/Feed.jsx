@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Feed = () => {
   const navigate = useNavigate();
+  
   if(!(localStorage.getItem('token'))) {
     navigate('/login');
   }

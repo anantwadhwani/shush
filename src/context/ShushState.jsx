@@ -3,7 +3,7 @@ import ShushContext from "./ShushContext";
 
 const ShushState = (props) => {
     // const url = 'http://localhost:4000/shush/';
-    const api = process.env.API_URL;
+    const api = process.env.REACT_APP_API_URL;
     const url = api+'shush/';
     const token = localStorage.getItem('token');
 

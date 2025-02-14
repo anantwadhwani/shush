@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import AuthContex from "./AuthContext";
 
 const AuthState = (props) => {
-    const api = process.env.API_URL;
+    const api = process.env.REACT_APP_API_URL;
     const url = api + 'auth/';
     // const url = 'http://localhost:000/auth/';
     const [selfData, setSelfData] = useState({ name: '', secretUserName: '', userName: '', date: '', email: '' });
