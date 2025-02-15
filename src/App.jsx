@@ -23,11 +23,12 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Feed />} />
             <Route exact path={`/shushes/${userName}`} element={<Shushes />} />
-            <Route path='/shushem/:userName' element={<ShushEm />} />
+            <Route exact path='/shushem/:userName' element={<ShushEm />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="/verify" element={<Verify />} />
-            <Route path='allUsers/:searchNameValue' element={<AllUsers />} />
+            <Route exact path='allUsers/:searchNameValue' element={<AllUsers />} />
+            <Route path="*" element={<Feed to="/" replace />} />
           </Routes>
           <Footer />
         </div>

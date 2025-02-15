@@ -57,12 +57,12 @@ const SignUp = () => {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="emailInput" className="form-label">Email</label>
-                    <input ref={refEmail} type="email" className="form-control" id="emailInput" placeholder='Enter your email' aria-describedby="emailHelp" />
+                    <input autoComplete='username' ref={refEmail} type="email" className="form-control" id="emailInput" placeholder='Enter your email' aria-describedby="emailHelp" />
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="passwordInput" className="form-label">Password</label>
-                    <input ref={refPassword} type="password" className="form-control" id="passwordInput" placeholder='Enter your password' />
+                    <input ref={refPassword} autoComplete='new-password' type="password" className="form-control" id="passwordInput" placeholder='Enter your password' />
                 </div>
                 <button type="submit" className="btn btn-primary">Sign up</button>
             </form>

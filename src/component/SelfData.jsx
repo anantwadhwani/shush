@@ -26,7 +26,7 @@ const SelfData = () => {
                 <li><p className="dropdown-item">{email}</p></li>
                 <li><p className="dropdown-item">Member since {new Date(date).getUTCDate()}/{new Date(date).getUTCMonth()}/{new Date(date).getUTCFullYear()}</p></li>
                 <li style={{ borderBottomLeftRadius: '0.2rem', borderBottomRightRadius: '0.2rem', marginBottom: '0' }}><button onClick={handleLogOut} type="button" style={{ width: '100%', backgroundColor: 'red', color: 'white', border: '0.1rem red solid', borderBottomLeftRadius: '0.2rem', borderBottomRightRadius: '0.2rem' }}>Log Out</button></li>
-                <li style={{ display: 'none' }}><a ref={loginPageRef} href='/'></a></li>
+                <li style={{ display: 'none' }}><a ref={loginPageRef} href='/'> </a></li>
             </ul>
         </div>
     )

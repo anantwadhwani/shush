@@ -33,14 +33,14 @@ const Login = () => {
             <form className="my-3" onSubmit={handleUserLogin}>
                 <div className="mb-3">
                     <label htmlFor="emailInput" className="form-label">Email address</label>
-                    <input ref={emailRef} type="email" className="form-control" id="emailInput" />
+                    <input autoComplete='username' ref={emailRef} type="email" className="form-control" id="emailInput" />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="passwordInput" className="form-label">Password</label>
-                    <input ref={passwordRef} type="password" className="form-control" id="passwordInput" />
+                    <input ref={passwordRef} autoComplete='current-passowrd' type="password" className="form-control" id="passwordInput" />
                 </div>
                 <button type="submit" className="btn btn-primary">Log in</button>
-                <a style={{ display: 'none' }} ref={loginPageRef} href='/'></a>
+                <a style={{ display: 'none' }} ref={loginPageRef} href='/'> </a>
             </form>
         </div>
     )

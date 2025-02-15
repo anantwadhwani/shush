@@ -2,13 +2,13 @@ import React from 'react';
 import ShushContext from "./ShushContext";
 
 const ShushState = (props) => {
-    // const url = 'http://localhost:4000/shush/';
     const api = process.env.REACT_APP_API_URL;
-    const url = api+'shush/';
+    const url = api + 'shush/';
+    // const url = "http://localhost:4000/shush/"
     const token = localStorage.getItem('token');
 
     const getUserShushes = async (userName) => {
-        const userShushes = await fetch(url+'userShushes/'+userName, {
+        const userShushes = await fetch(url + 'userShushes/' + userName, {
             method: 'GET',
             headers: {
                 'Auth-Token': token,
@@ -18,8 +18,8 @@ const ShushState = (props) => {
         return await userShushes.json();
     };
 
-    const postUserShush = async(name, userName, secretUserName, message) => {
-        const postResponse = await fetch(url+'shush',
+    const postUserShush = async (name, userName, secretUserName, message) => {
+        const postResponse = await fetch(url + 'shush',
             {
                 method: 'POST',
                 headers: {
@@ -32,8 +32,8 @@ const ShushState = (props) => {
         return await postResponse.json();
     }
 
-    const feedShushes = async() => {
-        const allShushes = await fetch(url+'feed', {
+    const feedShushes = async () => {
+        const allShushes = await fetch(url + 'feed', {
             method: 'GET',
             headers: {
                 'Auth-Token': token

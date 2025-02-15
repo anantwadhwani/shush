@@ -4,14 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 const Feed = () => {
   const navigate = useNavigate();
-  
-  if(!(localStorage.getItem('token'))) {
-    navigate('/login');
-  }
   const { feedShushes } = useContext(ShushContext);
   const [allShushes, setAllShushes] = useState([]);
 
   useEffect(() => {
+    if(!(localStorage.getItem('token'))) {
+      navigate('/login');
+    }
     feedShushes().then((feedResponse) => {
       if(feedResponse.statusMessage === 'success') {
         return setAllShushes(feedResponse.msg.reverse());

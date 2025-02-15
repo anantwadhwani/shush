@@ -4,7 +4,7 @@ import AuthContex from "./AuthContext";
 const AuthState = (props) => {
     const api = process.env.REACT_APP_API_URL;
     const url = api + 'auth/';
-    // const url = 'http://localhost:000/auth/';
+    // const url = "http://localhost:4000/auth/"
     const [selfData, setSelfData] = useState({ name: '', secretUserName: '', userName: '', date: '', email: '' });
     const token = localStorage.getItem('token');
 

@@ -22,7 +22,7 @@ const Shushes = () => {
         navigator.clipboard.writeText(urlRef.current.value);
         setCopied('copied');
     }
-    const userUrl = `http://localhost:3000/shushes/${userName}`;
+    const userUrl = process.env.REACT_APP_API_URL+`shushes/${userName}`;
 
     return (
         <div className="container">
